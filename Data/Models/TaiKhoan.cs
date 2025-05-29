@@ -10,24 +10,39 @@ namespace Data.Models
     internal class TaiKhoan
     {
         [Key]
-        public Guid taikhoanId { get; set; }
+        public Guid TaikhoanId { get; set; }
+
         [Required]
-        [RegularExpression(@"^[a-zA-Z0-9\s]+$")]
-        public string username {  get; set; }
+        [RegularExpression(@"^[a-zA-Z0-9\s]+$", ErrorMessage = "Tên đăng nhập không hợp lệ")]
+        public string Username { get; set; }
+
         [Required]
-        public string password { get; set; }
+        public string Password { get; set; }
+
         [Required]
-        [RegularExpression(@"^[a-zA-Z\s]+$")]
-        public string hovaten {  get; set; }
+        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Họ và tên không hợp lệ")]
+        public string Hovaten { get; set; }
+
         [Required]
-        public string gioitinh {  get; set; }
+        [RegularExpression(@"^(Nam|Nữ)$", ErrorMessage = "Giới tính phải là Nam hoặc Nữ")]
+        public string Gioitinh { get; set; }
+
         [Required]
         [RegularExpression(@"^0\d{9,10}$", ErrorMessage = "Số điện thoại không hợp lệ")]
-        public string sdt {  get; set; }
-        public string diachi { get; set; }
-        public string email { get; set; }
-        public DateTime ngaysinh { get; set; }
-        public DateTime ngaytaotaikhoan {  get; set; }
-        public int trangthai { get; set; }
+        public string Sdt { get; set; }
+
+        public string Diachi { get; set; }
+
+        [EmailAddress(ErrorMessage = "Email không hợp lệ")]
+        public string Email { get; set; }
+
+        [Required]
+        public DateTime Ngaysinh { get; set; }
+
+        [Required]
+        public DateTime Ngaytaotaikhoan { get; set; }
+
+        public int Trangthai { get; set; }
     }
+
 }
